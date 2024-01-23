@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Serenidad</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+<meta name="title" content="Serenidad" />
+<meta name="description" content="A real website, with a real podcast, with 2 real people, doing `real` things. />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cloud-ejgobe1sy-hack-club-bot.vercel.app/0screenshot_2024-01-01_at_10.57.01___pm.png
+" />
+<meta property="og:title" content="Serenidad" />
+<meta property="og:description" content="A real website, with a real podcast, with 2 real people, doing "real" things." />
+<meta property="og:image" content="https://cloud-ejgobe1sy-hack-club-bot.vercel.app/0screenshot_2024-01-01_at_10.57.01___pm.png
+" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="https://cloud-ejgobe1sy-hack-club-bot.vercel.app/0screenshot_2024-01-01_at_10.57.01___pm.png
+" />
+<meta property="twitter:title" content="Serenidad" />
+<meta property="twitter:description" content="A real website, with a real podcast, with 2 real people, doing "real" things." />
+<meta property="twitter:image" content="https://cloud-ejgobe1sy-hack-club-bot.vercel.app/0screenshot_2024-01-01_at_10.57.01___pm.png">
+
+</head>
+    <body>
+        <main>
+        <p><b>Serenidad</b></p>
+
+        <div>
+            <p><b>Our 2023 Recap</b></p>
+            <p>In 2023 we built vr toon shading, serenidad font and poster, bought parts to build our own VR headset,      <a href="https://sidequestvr.com/app/27172/life-of-chai">Created a deep chai VR expierence</a>, 
+
+                <a href="https://www.youtube.com/watch?v=nYBHIlbBDw8">Collabed at MHacks16 with Fayd and Sam on a VR memory sharing expierence</a>,
+                built a UI for for a cafe tech bro map idea, deet bought a meta quest 3,
+                <a href="https://redirectsite.thomasstubblef2.repl.co/"> created a site leading to random Japanese websites</a>,
+
+                created our own Uber app for our friends,
+                <a href="https://drive.google.com/file/d/1lXfTr5pVPC9RjnJSwrVn39QRXXqdIN49/view?usp=sharing"> produced our first full AI Video</a>,
+
+                <a href="https://basket-buddy.vercel.app/"> created a receipt scanning app for shopping roommates</a>,
+
+                <a href="https://burlingtonbuzz.vercel.app/"> an AI-driven news platform for Burlington folk</a>,
+
+                recorded an episode on a plane <i>(who the hell does that?)</i> Organized and revamped our Vermont home office, transitioned to adulthood, 
+
+                <a href="https://www.youtube.com/watch?v=9ePTB4SFP5w">Hosted and organized South Carolinas first teenager hackathon</a>,
+                
+                spent weeks trying to find a place to live in Vermont, 
+                
+                <a href="https://apps.apple.com/us/app/penguin-pair-cards/id6446442403">created a silly card matching game with penguins 
+                </a>,
+                
+                explored an empty lake,
+                
+                <a href="https://apps.apple.com/us/app/telegrade/id1667140470">created a free resource app for entrepreneurs in organic marketing</a>,
+                
+                attended a start up event in Columbia SC, flew to India and Japan.</p>
+
+        </div>
+
+        <div>
+            <p><b>Towards Horizon, 2024</b></p>
+            <p>In 2024 we will build virtual reality experiences that deliver users joy & serenity. There's no set plan, and we'll figure it out along the way. We'll document the whole process in our podcast, so stay up to date or don't.</p>
+        </div>
+
+        <p>feel free to reach out <a href="mailto:Dieter@serenidad.app">dieter@serenidad.app</a> or <a href="mailto:thomas@serenidad.app">thomas@serenidad.app</a></p>
+
+        <p><b>Building Serenidad Podcast</b></p>
+        <p>Below are episodes of our podcast, Building Serenidad. Feel free to use this audio content for whatever purposes you find pleasant.</p>
+        <div id="episodes">
+        </div>
+
+
+        </main>
+    </body>
+    <script>
+//         fetch('/rss') 
+//   .then(response => response.text())
+//   .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+//   .then(data => {
+//     const items = data.querySelectorAll("item");
+//     items.forEach(el => {
+//       const audioUrl = el.querySelector("enclosure").getAttribute("url");
+//       const title = el.querySelector("title").textContent;
+      
+//       console.log(audioUrl, title);
+//       document.getElementById("episodes").innerHTML += `<div class="podcast">
+//     <p><b>${title}</b></p>
+//     <button class="play-button" data-audio-src="${audioUrl}">Listen</button>
+//     <audio controls class="audio-player"></audio>
+// </div>`;
+
+fetch('/rss') 
+  .then(response => response.text())
+  .then(str => new window.DOMParser().parseFromString(str, "text/xml"))
+  .then(data => {
+    const items = data.querySelectorAll("item");
+    const fragment = document.createDocumentFragment();
+
+    items.forEach(el => {
+      const audioUrl = el.querySelector("enclosure").getAttribute("url");
+      const title = el.querySelector("title").textContent;
+      
+      const podcastDiv = document.createElement("div");
+      podcastDiv.className = "podcast";
+
+      
+      const titleParagraph = document.createElement("p");
+      const titleStrong = document.createElement("strong");
+      titleStrong.textContent = title;
+      titleParagraph.appendChild(titleStrong);
+
+      const playButton = document.createElement("button");
+      playButton.className = "play-button";
+      playButton.textContent = "Listen";
+      playButton.setAttribute("data-audio-src", audioUrl);
+
+      const audioPlayer = document.createElement("audio");
+      audioPlayer.controls = true;
+      audioPlayer.className = "audio-player";
+      audioPlayer.style.display = "none"
+      // Event listener for play button
+      playButton.addEventListener('click', function() {
+        audioPlayer.src = this.getAttribute("data-audio-src");
+        audioPlayer.play();
+        audioPlayer.style.display = "flex"
+        playButton.style.display = "none"
+
+      });
+
+      podcastDiv.appendChild(titleParagraph);
+      podcastDiv.appendChild(playButton);
+      podcastDiv.appendChild(audioPlayer);
+
+      fragment.appendChild(podcastDiv);
+    });
+
+    document.getElementById("episodes").appendChild(fragment);
+  });
+
+// Add this script after the above code to handle button clicks
+document.querySelectorAll('.play-button').forEach(button => {
+    button.addEventListener('click', function() {
+        const audioSrc = this.getAttribute('data-audio-src');
+        const audioPlayer = this.nextElementSibling;
+        if (audioPlayer.src !== audioSrc) {
+            audioPlayer.src = audioSrc;
+        }
+        audioPlayer.play();
+    });
+});
+
+//       document.getElementById("episodes").innerHTML += `<div class="podcast">
+//     <div style="display: flex; justify-content: space-between; flex-direction: row;">
+//         <p><b>${title}</b></p>
+//     <button class="play-button" data-audio-src="${audioUrl}">Listen</button>
+//     </div> 
+//     <audio controls class="audio-player"></audio>
+// </div>`;
+
+// // Add this script after the above code to handle button clicks
+// document.querySelectorAll('.play-button').forEach(button => {
+//     button.addEventListener('click', function() {
+//         const audioSrc = this.getAttribute('data-audio-src');
+//         console.log(audioSrc)
+
+//         const audioPlayer = this.nextElementSibling;
+//         if (audioPlayer?.src !== audioSrc) {
+//             audioPlayer.src = audioSrc;
+//         }
+//         audioPlayer.play();
+//     });
+// });
+
+      // Generate and append HTML snippet
+      // Example: <div><h3>{title}</h3><audio controls src={audioUrl}></audio></div>
+//     });
+//   });
+
+    </script>
+</html>
