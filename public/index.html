@@ -31,9 +31,19 @@
         <main>
         <p><b>Serenidad</b></p>
 
+        
+        <div>
+            <p><b>Serenidad Tribe</b></p>
+            <p>Hear about cool projects we ship through signing up for Serenidad Tribe.</p>
+            <p style="display: inline" id="tribeCaption">email:</p>
+            <input type="email" id="tribeInput" placeholder="" style="background-color: rgb(255, 223, 142); border: 1px solid #d2300c; outline-color: #d2300c; color: #d2300c"/>
+            <button id="tribeButton" style="cursor: pointer">join tribe</button>
+        </div>
+
+
         <div>
             <p><b>Our 2023 Recap</b></p>
-            <p>In 2023 we built vr toon shading, serenidad font and poster, bought parts to build our own VR headset,      <a href="https://sidequestvr.com/app/27172/life-of-chai">Created a deep chai VR expierence</a>, 
+            <p>In 2023 we built serenidad font and poster, bought parts to build our own VR headset,      <a href="https://sidequestvr.com/app/27172/life-of-chai">Created a deep chai VR expierence</a>, 
 
                 <a href="https://www.youtube.com/watch?v=nYBHIlbBDw8">Collabed at MHacks16 with Fayd and Sam on a VR memory sharing expierence</a>,
                 built a UI for for a cafe tech bro map idea, deet bought a meta quest 3,
@@ -42,11 +52,11 @@
                 created our own Uber app for our friends,
                 <a href="https://drive.google.com/file/d/1lXfTr5pVPC9RjnJSwrVn39QRXXqdIN49/view?usp=sharing"> produced our first full AI Video</a>,
 
-                <a href="https://basket-buddy.vercel.app/"> created a receipt scanning app for shopping roommates</a>,
+                <a href="https://basket-buddy.vercel.app/"> created a receipt scanning app for roommate shopping trips</a>,
 
                 <a href="https://burlingtonbuzz.vercel.app/"> an AI-driven news platform for Burlington folk</a>,
 
-                recorded an episode on a plane <i>(who the hell does that?)</i> Organized and revamped our Vermont home office, transitioned to adulthood, 
+                recorded a podcast episode on a plane <i>(who the hell does that?)</i> Organized and revamped our Vermont home office, transitioned to adulthood, 
 
                 <a href="https://www.youtube.com/watch?v=9ePTB4SFP5w">Hosted and organized South Carolinas first teenager hackathon</a>,
                 
@@ -82,6 +92,21 @@
         </div>
 
         <div>
+
+            <p><b>Capybara Beach</b></p>
+            <p>Capybara Beach is a small virtual reality experience we made that allows Dieter to fulfill his life goal of seeing a Capybara in real life (except the capybara isn't actually real). Enter Capybara Beach and take photos of some cute capybaras and have those photos sent to your phone. <a href="https://sidequestvr.com/app/31539/capybara-beach">Get Capybara Beach on Side Quest</a>            </p>
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; flex-direction: row; width: 100%; align-items: center;">
+                <img src="./capybaraBeach.png" style="width: 180px; height: 90px; object-fit: cover;"/>
+            </div>
+
+            <p>Here was the most recently taken photo in the game (if you take a photo in the game, this will update):</p>
+            <img id="mostRecent" src="./capybaraBeach.png" style="width: 90px; height: 90px; object-fit: cover;"/>
+
+            <p>Here's a random thing Thomas made when on an airplane and no wifi <a href="./capybaraGame.html">Capybara Web Game Thing</a></p>
+        </div>
+
+        <div>
             <p><b>Towards Horizon, 2024</b></p>
             <p>In 2024 we will build virtual reality experiences that deliver users joy & serenity. There's no set plan, and we'll figure it out along the way. We'll document the whole process in our podcast, so stay up to date or don't.</p>
         </div>
@@ -99,6 +124,47 @@
 
         </main>
     </body>
+
+    <script>
+
+async function fetchCapybaraPhoto() {
+            try {
+                const response = await fetch('https://x8ki-letl-twmt.n7.xano.io/api:HIeiN0nD/capybaras')
+                if (!response.ok) {
+                    throw new Error('Failed to fetch capybara photo');
+                }
+                const data = await response.json();
+                const mostRecentCapybara = data[data.length - 1].image;
+                const imgCapybara = document.getElementById("mostRecent");
+                imgCapybara.src = mostRecentCapybara;
+                console.log('this runs');
+                console.log(mostRecentCapybara);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        fetchCapybaraPhoto()
+
+        console.log("this part runs")
+        const button = document.getElementById("tribeButton")
+        const input = document.getElementById("tribeInput")
+        const caption = document.getElementById("tribeCaption")
+        console.log(caption)
+
+        button.addEventListener("click", function () {
+            addToDatabase(input.value)
+            button.style.opacity = 0
+            input.style.opacity = 0
+            caption.innerHTML = "You're part of the Serenidad Tribe now. You may receive an email from us one day (or maybe not, time will tell)"
+
+        })
+
+        function addToDatabase(email) {
+            console.log(`added ${email} to database`)
+        }
+    </script>
+
     <script>
 //         fetch('/rss') 
 //   .then(response => response.text())

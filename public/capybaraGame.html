@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Capybara Game</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+<meta name="title" content="Capybara Game" />
+<meta name="description" content="A real website, with a real podcast, with 2 real people, doing `real` things." />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cloud-ejgobe1sy-hack-club-bot.vercel.app/0screenshot_2024-01-01_at_10.57.01___pm.png
+" />
+<meta property="og:title" content="Capybara Game" />
+<meta property="og:description" content="A real website, with a real podcast, with 2 real people, doing "real" things." />
+<meta property="og:image" content="https://cloud-ejgobe1sy-hack-club-bot.vercel.app/0screenshot_2024-01-01_at_10.57.01___pm.png
+" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content="https://cloud-ejgobe1sy-hack-club-bot.vercel.app/0screenshot_2024-01-01_at_10.57.01___pm.png
+" />
+<meta property="twitter:title" content="Capybara Game" />
+<meta property="twitter:description" content="A real website, with a real podcast, with 2 real people, doing "real" things." />
+<meta property="twitter:image" content="https://cloud-ejgobe1sy-hack-club-bot.vercel.app/0screenshot_2024-01-01_at_10.57.01___pm.png">
+
+</head>
+    <body style="height: 100vh">
+        <img id="littleCapybara" style="width: 128px; position: absolute; top: 0; left: 0" src="littleCapybara.png"/>
+        <p>Capybara Boba Run</p>
+        <p id="score">Score: 0</p>
+
+    </body>
+    <script>
+        let score = -1
+        let leftValue = 0
+        let topValue = 0
+        
+        let leftValueBoba = 0
+        let topValueBoba = 0
+
+        const maxWidth = document.body.clientWidth - document.getElementById('littleCapybara').style.width
+        const maxHeight = document.body.clientHeight - document.getElementById('littleCapybara').style.height
+
+        
+
+        function spawnBoba() {
+            score++
+            document.getElementById("score").innerHTML = `Score ${score}`
+            leftValueBoba = Math.random() * document.body.clientWidth
+            topValueBoba = Math.random() * document.body.clientHeight
+
+            document.body.innerHTML += `<img id="boba" style="width: 64px; position: absolute; left: ${leftValueBoba}px; top: ${topValueBoba}px" src="./boba.png"/>`
+        }
+        spawnBoba()
+
+
+        document.addEventListener("keydown", function(e) {
+            const littleCapybara = document.getElementById('littleCapybara')
+            const boba = document.getElementById('boba')
+
+            console.log(e.key)
+            if (e.key == "w") {
+                console.log(littleCapybara.style.top)
+                topValue -= 20
+                document.getElementById('littleCapybara').style.top = `${topValue}px`
+            }
+            if (e.key == "s") {
+                console.log(littleCapybara.style.top)
+                topValue += 20
+                document.getElementById('littleCapybara').style.top = `${topValue}px`
+            }
+            if (e.key == "a") {
+                console.log(littleCapybara.style.left)
+                leftValue -= 20
+                document.getElementById('littleCapybara').style.left = `${leftValue}px`
+            }
+            if (e.key == "d") {
+                console.log(littleCapybara.style.left)
+                leftValue += 20
+                document.getElementById('littleCapybara').style.left = `${leftValue}px`
+            }
+
+            if((leftValue + 30 > leftValueBoba && leftValue - 30 < leftValueBoba)
+            && (topValue + 30 > topValueBoba && topValue - 30 < topValueBoba)
+            ) {
+                console.log('wow')
+                const theBoba = document.getElementById('boba')
+                document.getElementById('boba').style.opacity = 0
+                
+                document.getElementById('boba').id = "notBoba"
+            
+                spawnBoba()
+
+
+       
+
+            }
+        })
+    </script>
+</html>
