@@ -1,6 +1,6 @@
 # Welcome to the Serenidad 🎋
 
-Hello, You’ve just landed into the most bizarre corner of the internet.
+You’ve just landed into the most bizarre corner of the internet.
 
 What’s Inside?
 - VR worlds where physics is just a suggestion.
